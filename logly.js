@@ -152,6 +152,7 @@ exports.name = function( applicationName ) {
 exports.options = function( opts ) {
   options.colourText = (('color' in opts) ? (opts.color === true) : (('colour' in opts) ? (opts.colour === true) : options.colourText));
   options.datePrefix = (('date' in opts) ? opts.date : options.datePrefix);
+  return exports;
 };
 
 // this is for compatibility with initial way to set output coloring
