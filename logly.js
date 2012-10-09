@@ -57,24 +57,28 @@ var logger = function( input, methodMode ) {
 }; // logger
 
 
-var debug = function( input ) {
+var debug = function() {
+  var input = Array.prototype.join.call(arguments,' ');
   if ( 'debug' == mode[ process.pid ] ) {
     logger( input, 'debug' );
   }
 };
 
-var log = function( input ) {
+var log = function() {
+  var input = Array.prototype.join.call(arguments,' ');
   if ( 'standard' == mode[ process.pid ] || 'verbose' == mode[ process.pid ] 
       || 'debug' == mode[ process.pid ] ) {
     logger( input, 'standard' );
   }
 };
 
-var error = function( input ) {
+var error = function() {
+  var input = Array.prototype.join.call(arguments,' ');
   logger( input, 'error' );
 };
 
-var stderr = function( input ) {
+var stderr = function() {
+  var input = Array.prototype.join.call(arguments,' ');
   if ( typeof( input ) === "string" ) {
     process.stderr.write( input );
   } else if ( typeof( input ) === "function" ) {
@@ -82,7 +86,8 @@ var stderr = function( input ) {
   }
 };
 
-var stdout = function( input ) {
+var stdout = function() {
+  var input = Array.prototype.join.call(arguments,' ');
   if ( typeof( input ) === "string" ) {
     process.stdout.write( input );
   } else if ( typeof( input ) === "function" ) {
@@ -90,13 +95,15 @@ var stdout = function( input ) {
   }
 };
 
-var verbose = function( input ) {
+var verbose = function() {
+  var input = Array.prototype.join.call(arguments,' ');
   if ( 'verbose' == mode[ process.pid ] || 'debug' == mode[ process.pid ] ) {
     logger( input, 'verbose' );
   }
 };
 
-var warn = function( input ) {
+var warn = function() {
+  var input = Array.prototype.join.call(arguments,' ');
   logger( input, 'warn' );
 };
 
